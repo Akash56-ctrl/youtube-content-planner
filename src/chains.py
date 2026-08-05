@@ -24,7 +24,9 @@ from src.prompts import (
 )
 
 
-def build_content_planner_chain(provider: str | None = None, temperature: float = 0.7):
+def build_content_planner_chain(
+    provider: str | None = None, temperature: float = 0.7, api_key: str | None = None
+):
     """
     Assemble and return the full sequential chain.
 
@@ -33,8 +35,12 @@ def build_content_planner_chain(provider: str | None = None, temperature: float 
 
     And returns a dict with keys:
         video_ideas, seo_titles, thumbnails, schedule
+
+    Args:
+        api_key: explicit key entered by the user at runtime (e.g. sidebar
+                 input), takes priority over .env / Streamlit Secrets.
     """
-    llm = get_llm(provider=provider, temperature=temperature)
+    llm = get_llm(provider=provider, temperature=temperature, api_key=api_key)
     parser = StrOutputParser()
 
     # Stage 1: raw video ideas

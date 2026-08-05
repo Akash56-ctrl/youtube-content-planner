@@ -31,11 +31,29 @@ with st.sidebar:
     st.header("⚙️ Settings")
     provider = st.selectbox("LLM Provider", ["gemini", "groq"], index=0)
     temperature = st.slider("Creativity (temperature)", 0.0, 1.0, 0.7, 0.05)
+
     st.markdown("---")
-    st.markdown(
-        "Add your API key(s) to a `.env` file before running.\n\n"
-        "See `.env.example` for the required variables."
+    st.subheader("🔑 API Key")
+    st.caption(
+        "Paste your key here to use the app immediately — it's kept only "
+        "in this browser session and is never saved to the repo or disk. "
+        "Leave blank to fall back to a key set in `.env` / Streamlit Secrets."
     )
+
+    if provider == "gemini":
+        user_api_key = st.text_input(
+            "Gemini API key",
+            type="password",
+            placeholder="AIza...",
+            help="Get one at https://aistudio.google.com/app/apikey",
+        )
+    else:
+        user_api_key = st.text_input(
+            "Groq API key",
+            type="password",
+            placeholder="gsk_...",
+            help="Get one at https://console.groq.com/keys",
+        )
 
 st.subheader("1. Tell us about your channel")
 
@@ -64,7 +82,11 @@ if generate:
     else:
         with st.spinner("Running the content planning chain..."):
             try:
-                chain = build_content_planner_chain(provider=provider, temperature=temperature)
+                chain = build_content_planner_chain(
+                    provider=provider,
+                    temperature=temperature,
+                    api_key=user_api_key or None,
+                )
                 result = chain.invoke(
                     {
                         "niche": niche,
