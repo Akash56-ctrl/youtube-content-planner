@@ -26,7 +26,7 @@ st.caption(
     "LangChain sequential chain: video ideas → SEO titles → thumbnail "
     "suggestions → upload schedule."
 )
-
+set_background("bg yt.jpg")
 with st.sidebar:
     st.header("⚙️ Settings")
     provider = st.selectbox("LLM Provider", ["gemini", "groq"], index=0)
