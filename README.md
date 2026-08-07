@@ -105,7 +105,3 @@ YouTube-Content-Planner/
 - LangChain (LCEL Chains)
 - Streamlit
 - Google Gemini API / Groq API
-
-## 📄 License
-
-This project is licensed under the MIT License — see [LICENSE](LICENSE) for details.
