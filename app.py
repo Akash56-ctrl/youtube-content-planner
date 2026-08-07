@@ -1,14 +1,3 @@
-"""
-app.py
-------
-Streamlit UI for the YouTube Content Planner (MED-01).
-
-Level: Intermediate
-Core concept: LangChain Sequential Chain
-Features: video ideas, SEO titles, thumbnail suggestions, upload schedule
-APIs: Google Gemini / Groq
-"""
-
 import datetime
 import streamlit as st
 
