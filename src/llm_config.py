@@ -21,7 +21,7 @@ load_dotenv()
 # "gemini-flash-latest" is Google's officially maintained alias that always
 # points at the current Flash model, so this won't 404 again when a
 # specific dated model (e.g. gemini-1.5-flash) is eventually retired.
-DEFAULT_GEMINI_MODEL = "gemini-flash-latest"
+DEFAULT_GEMINI_MODEL ="gemini-2.5-flash"
 
 # llama-3.1-70b-versatile / llama-3.3-70b-versatile were deprecated by Groq;
 # openai/gpt-oss-120b is their recommended current replacement.
